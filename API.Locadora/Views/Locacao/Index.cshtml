@@ -1,0 +1,55 @@
+﻿@model IEnumerable<API.Locadora.Models.Locacao>
+
+@{
+    ViewData["Title"] = "Lista de locações";
+}
+
+<h1>Lista de locações</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CpfCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataLocacao)
+            </th>
+            <th class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Filmes)
+            </th>            
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CpfCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataLocacao)
+            </td>
+            <td>
+                <ul>
+                    @foreach (var filme in item.Filmes)
+                    {
+                        @*@Html.DisplayFor(modelItem => filme.Nome)*@
+                        <li>@filme.Nome</li>
+                    }
+                </ul>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
