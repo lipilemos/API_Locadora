@@ -8,5 +8,5 @@ FROM mcr.microsoft.com/dotnet/aspnet:5.0
 WORKDIR /app
 COPY --from=build-env /app/out .
 ENV ASPNETCORE_ENVIRONMENT Production
-EXPOSE 80
+EXPOSE 5001
 ENTRYPOINT ["dotnet", "API.Locadora.dll"]
