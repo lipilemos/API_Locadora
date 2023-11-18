@@ -65,7 +65,7 @@ namespace API.Locadora.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (var transaction = _context.Database.BeginTransaction())
+                using (var transaction =  _context.Database.BeginTransaction())
                 {
                     try
                     {
